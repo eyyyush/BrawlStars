@@ -7,6 +7,7 @@ public class Game extends PApplet {
     private Colt colt;
 
 
+
     public void settings() {
         size(800, 800);   // set the window size
 
@@ -77,14 +78,7 @@ public class Game extends PApplet {
 
         }
 
-    /*public void keyPressed() {
-        if (key == 'w') {
-            shelly.setY(10);
-        }
-        if (key=='a'){
-            shelly.setX(50);
-        }
-  */
+
     }
 
 

@@ -1,3 +1,5 @@
+import processing.core.PApplet;
+
 public class Bullet {
     private int x;
     private int y;
@@ -25,5 +27,10 @@ public class Bullet {
 
     public void hitBrawler(Brawler b){
 
+    }
+
+    public void draw(PApplet window){
+        window.fill(145);
+        window.ellipse(x, y, 60,60 );  // draw circle at mouse loc
     }
 }
