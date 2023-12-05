@@ -14,6 +14,11 @@ public class Colt extends Brawler{
     }
 
     public void update(PApplet window){
+        window.ellipse(x, y, 60,60 );  // draw circle at mouse loc
+
+    }
+
+    public void keyReleased(){
 
     }
 }

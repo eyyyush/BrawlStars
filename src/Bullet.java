@@ -3,6 +3,8 @@ import processing.core.PApplet;
 public class Bullet {
     private int x;
     private int y;
+    private int xSpeed;
+    private int ySpeed;
 
     public int getX() {
         return x;
@@ -31,6 +33,19 @@ public class Bullet {
 
     public void draw(PApplet window){
         window.fill(145);
-        window.ellipse(x, y, 60,60 );  // draw circle at mouse loc
+        window.ellipse(x, y, 10,10 );
+        xSpeed=1;
+        ySpeed=1;
+        x+=xSpeed;
+        y+=ySpeed;// draw circle at mouse loc
     }
+
+    public boolean colliding(int x, int y){
+
+
+
+        return true;
+    }
+
+
 }
