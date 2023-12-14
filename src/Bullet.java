@@ -22,26 +22,32 @@ public class Bullet {
         this.y = y;
     }
 
-    public Bullet(int x, int y){
-        this.x=x;
-        this.y=y;
+    public Bullet(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public void hitBrawler(Brawler b){
 
-    }
 
-    public void draw(PApplet window){
+    public void draw(PApplet window) {
         window.fill(145);
-        window.ellipse(x, y, 10,10 );
-        xSpeed=1;
-        ySpeed=1;
-        x+=xSpeed;
-        y+=ySpeed;// draw circle at mouse loc
+        window.ellipse(x, y, 10, 10);
+
     }
 
-    public boolean colliding(int x, int y){
+    public void setSpeed(int brawlerx, int bralwery) {
+        xSpeed = brawlerx/2;
+        ySpeed = bralwery/2;
 
+    }
+
+    public void update(PApplet window) {
+
+        x += xSpeed;
+        y += ySpeed;// draw circle at mouse loc
+    }
+
+    public boolean colliding(int x, int y) {
 
 
         return true;
