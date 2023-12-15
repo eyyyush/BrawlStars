@@ -118,6 +118,9 @@ public class Brawler {
         return health;
     }
 
+
+    public void setHealth(int health){this.health=health;}
+
     public void hit() {
         this.health = health - 1;
     }

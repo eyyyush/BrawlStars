@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
+import java.io.*;
 import java.security.Key;
 import java.util.ArrayList;
 
@@ -51,8 +52,8 @@ public class Game extends PApplet {
         // paint screen white
         background(background);
         fill(0, 255, 0);          // load green paint color
-     ///   ellipse(40, 760, 60, 60);  // draw circle at mouse loc
-       // ellipse(760, 40, 60, 60);
+        ///   ellipse(40, 760, 60, 60);  // draw circle at mouse loc
+        // ellipse(760, 40, 60, 60);
         rect(125, 175, 100, 100);
         rect(600, 250, 100, 100);
         rect(400, 500, 100, 100);
@@ -181,25 +182,25 @@ public class Game extends PApplet {
 
         if (colt.health <= 0) {
             fill(0);
-          //  rect(0, 0, 800, 800);
+            //  rect(0, 0, 800, 800);
             image(preetham, 0, 0);
             fill(0);
             textSize(75);
             //textMode(0);
             text("Game Over\nShelly Wins", 200, 550);
         }
-            if (shelly.health <= 0) {
-                fill(0);
-              //  rect(0, 0, 800, 800);
-                image(preetham, 0, 0);
+        if (shelly.health <= 0) {
+            fill(0);
+            //  rect(0, 0, 800, 800);
+            image(preetham, 0, 0);
 
-                fill(0);
-                textSize(75);
-                //textMode(0);
-                text("Game Over\nColt Wins", 200, 550);
+            fill(0);
+            textSize(75);
+            //textMode(0);
+            text("Game Over\nColt Wins", 200, 550);
 
 
-            }
+        }
 
 
 
@@ -251,6 +252,64 @@ public class Game extends PApplet {
                 coltList.add(b);
             }
 */
+        if (key == 'p') {
+            try {
+                PrintWriter out = new PrintWriter(new FileWriter("saveGame.txt"));
+
+
+                out.println(shelly.getX());
+                out.println(shelly.getY());
+                out.println(shelly.getXspeed());
+                out.println(shelly.getYspeed());
+                out.println(shelly.getHealth());
+
+                out.println(colt.getX());
+                out.println(colt.getY());
+                out.println(colt.getXspeed());
+                out.println(colt.getYspeed());
+                out.println(colt.getHealth());
+
+                out.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+
+        if (key == 'r') {
+
+            try {
+                BufferedReader in = new BufferedReader(new FileReader("saveGame.txt"));
+
+                String line;
+                line = in.readLine();
+                shelly.setX(Integer.parseInt(line));
+                line = in.readLine();
+                shelly.setY(Integer.parseInt(line));
+                line = in.readLine();
+                shelly.setXspeed(Integer.parseInt(line));
+                line = in.readLine();
+                shelly.setYspeed(Integer.parseInt(line));
+                line = in.readLine();
+                shelly.setHealth(Integer.parseInt(line));
+
+                line = in.readLine();
+                colt.setX(Integer.parseInt(line));
+                line = in.readLine();
+                colt.setY(Integer.parseInt(line));
+                line = in.readLine();
+                colt.setXspeed(Integer.parseInt(line));
+                line = in.readLine();
+                colt.setYspeed(Integer.parseInt(line));
+                line = in.readLine();
+                colt.setHealth(Integer.parseInt(line));
+
+                in.close();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
     }
